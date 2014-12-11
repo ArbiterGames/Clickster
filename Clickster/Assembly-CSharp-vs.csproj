@@ -46,7 +46,9 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ClickArena.cs" />
+     <Compile Include="Assets\Scripts\AnimateOnTouch.cs" />
+     <Compile Include="Assets\Scripts\ClickArenaManager.cs" />
+     <Compile Include="Assets\Scripts\ClickTrigger.cs" />
      <Compile Include="Assets\Scripts\MainMenu.cs" />
      <Compile Include="Assets\SpritePacker\Example\Scripts\Level.cs" />
      <Compile Include="Assets\SpritePacker\Example\Scripts\SpriteSwitcher.cs" />
