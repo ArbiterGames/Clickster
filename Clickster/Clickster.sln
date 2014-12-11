@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 
 Project("{DCF5EDE0-3CF7-FE9C-FEAE-5DF2C81050B2}") = "Clickster", "Assembly-CSharp.csproj", "{5BA0F309-6B99-F10C-5FB3-B2169F15599B}"
 EndProject
+Project("{DCF5EDE0-3CF7-FE9C-FEAE-5DF2C81050B2}") = "Clickster", "Assembly-CSharp-Editor.csproj", "{B15E5C9D-1F67-4807-EFD3-F106BA4AE26A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,11 +15,15 @@ Global
 		{5BA0F309-6B99-F10C-5FB3-B2169F15599B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5BA0F309-6B99-F10C-5FB3-B2169F15599B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5BA0F309-6B99-F10C-5FB3-B2169F15599B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15E5C9D-1F67-4807-EFD3-F106BA4AE26A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15E5C9D-1F67-4807-EFD3-F106BA4AE26A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15E5C9D-1F67-4807-EFD3-F106BA4AE26A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15E5C9D-1F67-4807-EFD3-F106BA4AE26A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-		GlobalSection(MonoDevelopProperties) = preSolution
+				GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
