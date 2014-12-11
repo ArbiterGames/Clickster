@@ -11,14 +11,19 @@ public class AnimateOnTouch : MonoBehaviour
 	public List<Sprite> SpriteFrames = new List<Sprite>();
 	private SpriteRenderer spriteRenderer;
 	private bool shouldAnimate = false;
+	public GameObject arenaManagerGO;
+	private ClickArenaManager arenaManager;
 	
 	protected virtual void Awake()
 	{
+		arenaManager = arenaManagerGO.GetComponent<ClickArenaManager>();
 		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 	
 	public void OnMouseDown() {
-		shouldAnimate = true;
+		if ( arenaManager.gameOver == false ) {
+			shouldAnimate = true;
+		}
 	}
 	
 	protected virtual void Update()
@@ -34,6 +39,8 @@ public class AnimateOnTouch : MonoBehaviour
 				} 
 				spriteRenderer.sprite = SpriteFrames[Index];
 			}
+		} else if ( arenaManager.gameOver ) {
+			spriteRenderer.sprite = SpriteFrames[3];
 		}
 	}
 }

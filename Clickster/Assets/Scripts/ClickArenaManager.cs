@@ -4,20 +4,22 @@ using System.Linq;
 
 public class ClickArenaManager : MonoBehaviour {
 	
-	static int buttonHeight = 40;
-	static int padding = 10;
-	static int buttonWidth = 200;
-	static int xPos = (Screen.width - buttonWidth - padding) / 2;
+	private static int padding = 10;
+	private static int buttonHeight = 40;
+	private static int buttonWidth = Screen.width - padding * 2;
 	
 	public int score = 0;
+	public bool gameOver = false;
+	private float timeRemaining = 10.0f;
 	float sec = 0.0f;
-	float timeRemaining = 10.0f;
 	
 	
 	void Update () 
 	{   
 		if ( timeRemaining > 0 ) {
 			RunTimer();
+		} else {
+			gameOver = true;
 		}
 	}
 	
@@ -26,9 +28,17 @@ public class ClickArenaManager : MonoBehaviour {
 		
 		GUIStyle buttonStyle = new GUIStyle("button");
 		buttonStyle.fontSize = 32;
+		
 		GUIStyle labelStyle = new GUIStyle("label");
 		labelStyle.fontSize = 18;
+		labelStyle.fontStyle = FontStyle.Bold;
+		labelStyle.normal.textColor = Color.black;
 		labelStyle.alignment = TextAnchor.MiddleCenter;
+		
+		GUIStyle bunnyDialogue = new GUIStyle("label");
+		bunnyDialogue.fontSize = 18;
+		bunnyDialogue.fontStyle = FontStyle.Bold;
+		bunnyDialogue.alignment = TextAnchor.MiddleCenter;
 		
 		GUIStyle titleStyle = new GUIStyle("label");
 		titleStyle.fontSize = 32;
@@ -36,15 +46,18 @@ public class ClickArenaManager : MonoBehaviour {
 		titleStyle.normal.textColor = Color.red;
 		titleStyle.alignment = TextAnchor.MiddleCenter;
 		
-		GUI.Label(new Rect(xPos, padding, buttonWidth, 100), "Punch the Bunny!", titleStyle);
+		GUI.Label(new Rect(padding, padding, buttonWidth, 100), "Punch the Bunny!", titleStyle);
 		
-		GUI.Label(new Rect(xPos, 140, buttonWidth, labelStyle.fontSize + 10), "Score:" + score, labelStyle);
-		GUI.Label(new Rect(xPos, 140 + labelStyle.fontSize, buttonWidth, labelStyle.fontSize + 10), "Time remaining:" + timeRemaining, labelStyle);
-		
-		if ( timeRemaining == 0 ) {
-			if(GUI.Button(new Rect(padding * 2, 600, buttonWidth, buttonHeight), "Back", buttonStyle)) {
+		if ( gameOver ) {
+			if(GUI.Button(new Rect(padding, Screen.height - 60, buttonWidth, buttonHeight), "Back", buttonStyle)) {
 				Application.LoadLevel("MainMenu");
 			}
+			
+			GUI.Label(new Rect(padding, 120, buttonWidth, 100), "" + score, titleStyle);
+			GUI.Label(new Rect(padding, 180, buttonWidth, 100), "Please let me rest :(", bunnyDialogue);
+		} else {
+			GUI.Label(new Rect(padding, 140, buttonWidth, labelStyle.fontSize + 10), "Score:" + score, labelStyle);
+			GUI.Label(new Rect(padding, 140 + labelStyle.fontSize, buttonWidth, labelStyle.fontSize + 10), "Time remaining:" + timeRemaining, labelStyle);
 		}
 	}
 	
@@ -57,7 +70,7 @@ public class ClickArenaManager : MonoBehaviour {
 	}
 	
 	public void AddToScore() {
-		if ( timeRemaining > 0 ) {
+		if ( gameOver == false ) {
 			score++;
 		}
 	}
