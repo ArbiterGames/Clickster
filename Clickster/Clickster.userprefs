@@ -1,9 +1,11 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/MainMenu.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/ClickArenaManager.cs">
     <Files>
-      <File FileName="Assets/Scripts/MainMenu.cs" Line="29" Column="37" />
-      <File FileName="../ArbiterSDKExample/UnityExample/Assets/Scripts/GameState.cs" Line="18" Column="2" />
+      <File FileName="Assets/Scripts/ClickArenaManager.cs" Line="57" Column="48" />
+      <File FileName="Assets/Scripts/MainMenu.cs" Line="14" Column="29" />
+      <File FileName="Assets/Scripts/ClickTrigger.cs" Line="10" Column="67" />
+      <File FileName="Assets/Scripts/AnimateOnTouch.cs" Line="26" Column="4" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
