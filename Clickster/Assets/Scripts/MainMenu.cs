@@ -111,7 +111,8 @@ public class MainMenu : MonoBehaviour {
 					uiEnabled = false;
 					Arbiter.LoginAsAnonymous( LoginSuccessHandler, DefaultErrorHandler );
 				}
-				
+
+#if UNITY_IPHONE
 				// Uses Unity's social plugin to authenticate with Apple Game Center
 				// and then uses that Game Center account to authenticate with Aribter
 				//////////////////////////////////////////////////////////////////////
@@ -126,6 +127,7 @@ public class MainMenu : MonoBehaviour {
 					};
 					Social.localUser.Authenticate( processAuth );
 				}
+#endif
 			}
 		}
 	}
