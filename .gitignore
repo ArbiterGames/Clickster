@@ -20,3 +20,5 @@ Clickster/Clickster.sln
 sysinfo.txt
 
 /Clickster/iOS_Build/
+**.csproj
+**.pyc
