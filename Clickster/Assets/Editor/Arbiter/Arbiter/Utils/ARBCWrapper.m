@@ -87,7 +87,6 @@ void _loginAsAnonymous()
 void _loginWithGameCenterPlayer()
 {
     [[Arbiter sharedInstance] loginWithGameCenterPlayer:^(NSDictionary *jsonDict) {
-        NSLog(@"jsonDict: %@", jsonDict);
         UnitySendMessage("ArbiterBinding", "LoginWithGameCenterHandler", ProcessDictionaryParams( jsonDict ));
     }];
 }

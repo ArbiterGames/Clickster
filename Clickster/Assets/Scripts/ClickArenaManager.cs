@@ -81,15 +81,10 @@ public class ClickArenaManager : MonoBehaviour {
 		// Update the UI once Arbiter has returned the outcome of the Cash Challenge
 		////////////////////////////////////////////////////////////////////////////////
 		if ( gameState.practiceMode == false && outcomeReturned ) {
-			if ( gameState.challenge.Status == Arbiter.ScoreChallenge.StatusType.Closed ) {
-				if ( gameState.challenge.Winner != null ) {
-					if ( gameState.challenge.Winner.Id == Arbiter.UserId ) {
-						GUI.Label(new Rect(padding, 180, buttonWidth, labelStyle.fontSize + 10), "You Won " + gameState.challenge.Prize + " credits!", labelStyle);
-					} else {
-						GUI.Label(new Rect(padding, 180, buttonWidth, labelStyle.fontSize + 10), "You Lost", labelStyle);
-					}
-				}
-			} else if ( gameState.challenge.Status == Arbiter.ScoreChallenge.StatusType.Open || gameState.challenge.Status == Arbiter.ScoreChallenge.StatusType.Busy ) {
+			bool isWinner = IsWinner();
+			if ( isWinner ) {
+				GUI.Label(new Rect(padding, 180, buttonWidth, labelStyle.fontSize + 10), "You Won " + gameState.challenge.Prize + " credits!", labelStyle);
+			} else {
 				GUI.Label(new Rect(padding, 180, buttonWidth, labelStyle.fontSize + 10), "You Lost", labelStyle);
 			}
 		}
@@ -100,6 +95,18 @@ public class ClickArenaManager : MonoBehaviour {
 		if (sec >= 1) {
 			timeRemaining -= Mathf.Floor(sec);
 			sec = 0;	
+		}
+	}
+	
+	bool IsWinner() {
+		if ( gameState.challenge.Status == Arbiter.ScoreChallenge.StatusType.Closed ) {
+			if ( gameState.challenge.Winner != null && gameState.challenge.Winner.Id == Arbiter.UserId ) {
+				return true;
+			} else {
+				return false;
+			}
+		} else {
+			return false;
 		}
 	}
 	
