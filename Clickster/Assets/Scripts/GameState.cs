@@ -4,7 +4,7 @@ using System.Collections;
 public class GameState : MonoBehaviour {
 	
 	public static GameState instance;
-	public Arbiter.ScoreChallenge challenge;
+	public Arbiter.CashChallenge challenge;
 	public bool practiceMode;
 	
 	void Awake() {

@@ -99,7 +99,7 @@ public class ClickArenaManager : MonoBehaviour {
 	}
 	
 	bool IsWinner() {
-		if ( gameState.challenge.Status == Arbiter.ScoreChallenge.StatusType.Closed ) {
+		if ( gameState.challenge.Status == Arbiter.CashChallenge.StatusType.Closed ) {
 			if ( gameState.challenge.Winner != null && gameState.challenge.Winner.Id == Arbiter.UserId ) {
 				return true;
 			} else {
@@ -110,7 +110,7 @@ public class ClickArenaManager : MonoBehaviour {
 		}
 	}
 	
-	void OnReportScoreSuccess( Arbiter.ScoreChallenge challenge ) {
+	void OnReportScoreSuccess( Arbiter.CashChallenge challenge ) {
 		gameState.challenge = challenge;
 		outcomeReturned = true;
 	}

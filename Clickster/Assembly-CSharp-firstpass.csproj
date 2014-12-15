@@ -48,12 +48,12 @@
   <ItemGroup>
      <Compile Include="Assets\Plugins\Arbiter\Arbiter.cs" />
      <Compile Include="Assets\Plugins\Arbiter\ArbiterBinding.cs" />
+     <Compile Include="Assets\Plugins\Arbiter\CashChallenge.cs" />
      <Compile Include="Assets\Plugins\Arbiter\Poller.cs" />
-     <Compile Include="Assets\Plugins\Arbiter\Protocols\ScoreChallengeProtocol.cs" />
+     <Compile Include="Assets\Plugins\Arbiter\Protocols\CashChallengeProtocol.cs" />
      <Compile Include="Assets\Plugins\Arbiter\Protocols\TournamentProtocol.cs" />
      <Compile Include="Assets\Plugins\Arbiter\Protocols\UserProtocol.cs" />
      <Compile Include="Assets\Plugins\Arbiter\Protocols\WalletProtocol.cs" />
-     <Compile Include="Assets\Plugins\Arbiter\ScoreChallenge.cs" />
      <Compile Include="Assets\Plugins\Arbiter\SimpleJSON.cs" />
      <Compile Include="Assets\Plugins\Arbiter\Tournament.cs" />
      <Compile Include="Assets\Plugins\Arbiter\User.cs" />

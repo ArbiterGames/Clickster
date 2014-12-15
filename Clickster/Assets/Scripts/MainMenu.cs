@@ -31,7 +31,7 @@ public class MainMenu : MonoBehaviour {
 		// whenever a logged in user hits the main menu
 		////////////////////////////////////////////////
 		if ( Arbiter.IsAuthenticated ) {
-			Arbiter.RequestScoreChallenge( "100", OnScoreChallengeCreated, OnScoreChallengeError );
+			Arbiter.RequestCashChallenge( "100", OnCashChallengeCreated, OnCashChallengeError );
 		}
 	}
 	
@@ -98,7 +98,7 @@ public class MainMenu : MonoBehaviour {
 					GUI.Label(new Rect(padding, 400 + buttonHeight * 3 + textHeight, buttonWidth, buttonHeight), "Entry fee: " + gameState.challenge.EntryFee, defaultTextStyle);
 					GUI.Label(new Rect(padding,  400 + buttonHeight * 4, buttonWidth, buttonHeight), "Prize: " + gameState.challenge.Prize, defaultTextStyle);
 					if ( GUI.Button(new Rect(padding, 400 + buttonHeight * 5, buttonWidth, buttonHeight), "Enter Cash Challenge", buttonStyle) ) {
-						Arbiter.AcceptScoreChallenge( gameState.challenge.Id, OnScoreChallengeAccepted, OnScoreChallengeError );
+						Arbiter.AcceptCashChallenge( gameState.challenge.Id, OnCashChallengeAccepted, OnCashChallengeError );
 					}
 				}
 				
@@ -144,7 +144,7 @@ public class MainMenu : MonoBehaviour {
 		} else {
 			uiEnabled = true;
 			if ( gameState.challenge == null ) {
-				Arbiter.RequestScoreChallenge( "100", OnScoreChallengeCreated, OnScoreChallengeError );
+				Arbiter.RequestCashChallenge( "100", OnCashChallengeCreated, OnCashChallengeError );
 			}
 		}
 	}
@@ -173,14 +173,14 @@ public class MainMenu : MonoBehaviour {
 	// Once a Cash Challenge has been created, set that challenge to 
 	// the GameState that gets passed along to the ClickArenaManager
 	/////////////////////////////////////////////////////////////////
-	void OnScoreChallengeCreated( Arbiter.ScoreChallenge challenge ) {
+	void OnCashChallengeCreated( Arbiter.CashChallenge challenge ) {
 		gameState.challenge = challenge;
 	}
 	
 	// Once a Cash Challenge has been successfully 
 	// accepted, send the user to the ClickArena!
 	////////////////////////////////////////////// 
-	void OnScoreChallengeAccepted() {
+	void OnCashChallengeAccepted() {
 		gameState.practiceMode = false;
 		Application.LoadLevel("ClickArena");
 	}
@@ -195,7 +195,7 @@ public class MainMenu : MonoBehaviour {
 	// Returns both developer errors and messages
 	// that can be based to the UI for the user
 	////////////////////////////////////////////////
-	void OnScoreChallengeError( List<string> errors, List<string> messages ) {
+	void OnCashChallengeError( List<string> errors, List<string> messages ) {
 		errors.ForEach( error => Debug.Log( error ));
 		messages.ForEach( error => Debug.Log( error ));
 	}
