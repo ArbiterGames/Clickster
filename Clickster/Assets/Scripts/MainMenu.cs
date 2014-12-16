@@ -16,6 +16,9 @@ public class MainMenu : MonoBehaviour {
 	////////////////////////////////////////////////////////////////////////////////////////////////
 	static GameState gameState;
 	
+	// Filters can be passed into the Cash Challenge request to segment different modes or levels or you game
+	Dictionary<string,string> filters;
+	
 	
 	void Awake() {
 		
@@ -26,12 +29,14 @@ public class MainMenu : MonoBehaviour {
 		}
 		
 		gameState.practiceMode = true;
+		filters = new Dictionary<string,string>();
+		filters.Add("level", "2");
 		
 		// Make sure we have the latest Cash Challenge 
 		// whenever a logged in user hits the main menu
 		////////////////////////////////////////////////
 		if ( Arbiter.IsAuthenticated ) {
-			Arbiter.RequestCashChallenge( "100", OnCashChallengeCreated, OnCashChallengeError );
+			Arbiter.RequestCashChallenge( filters, OnCashChallengeCreated, OnCashChallengeError );
 		}
 	}
 	
@@ -144,7 +149,7 @@ public class MainMenu : MonoBehaviour {
 		} else {
 			uiEnabled = true;
 			if ( gameState.challenge == null ) {
-				Arbiter.RequestCashChallenge( "100", OnCashChallengeCreated, OnCashChallengeError );
+				Arbiter.RequestCashChallenge( filters, OnCashChallengeCreated, OnCashChallengeError );
 			}
 		}
 	}

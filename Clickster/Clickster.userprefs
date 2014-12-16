@@ -1,6 +1,13 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace />
-  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../ArbiterSDKExample/UnityExample/Assets/Scripts/CashChallenge.cs">
+    <Files>
+      <File FileName="../../ArbiterSDKExample/UnityExample/Assets/Plugins/Arbiter/Protocols/CashChallengeProtocol.cs" Line="36" Column="19" />
+      <File FileName="../../ArbiterSDKExample/UnityExample/Assets/Plugins/Arbiter/Arbiter.cs" Line="351" Column="38" />
+      <File FileName="../../ArbiterSDKExample/UnityExample/Assets/Plugins/Arbiter/ArbiterBinding.cs" Line="362" Column="55" />
+      <File FileName="../../ArbiterSDKExample/UnityExample/Assets/Scripts/CashChallenge.cs" Line="27" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
