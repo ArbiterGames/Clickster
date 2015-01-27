@@ -32,9 +32,13 @@ void ClientCallbackWalletUpdated();
 @property (copy) NSString *currentIncompleteTournamentId;
 @property (strong, atomic) id<ARBWalletObserver> walletObserver;
 
+@property (strong, atomic) NSString* _deviceHash;
+- (NSString*)deviceHash;
+
 @property (strong, atomic) NSMutableDictionary* _user;
 - (void)setUser:(NSMutableDictionary *)user;
 - (NSMutableDictionary *)user;
+- (void)saveUserToken:(NSMutableDictionary *)user;
 
 @property (strong, atomic) NSMutableDictionary* _wallet;
 - (void)setWallet:(NSMutableDictionary *)wallet;
@@ -43,14 +47,16 @@ void ClientCallbackWalletUpdated();
 + (Arbiter *)sharedInstance;
 + (Arbiter *)initWithApiKey:(NSString *)apiKey accessToken:(NSString *)accessToken handler:(void(^)(NSDictionary *))handler;
 - (id)init:(void(^)(NSDictionary *))handler apiKey:(NSString *)apiKey accessToken:(NSString *)accessToken;
-- (void)loginAsAnonymous:(void(^)(NSDictionary *))handler;
+- (void)loginWithDevice:(void(^)(NSDictionary *))handler;
 - (void)loginWithGameCenterPlayer:(void(^)(NSDictionary *))handler;
 - (void)login:(void(^)(NSDictionary *))handler;
 - (void)logout:(void(^)(NSDictionary *))handler;
 - (bool)isUserAuthenticated;
 - (bool)isUserVerified;
 - (bool)isUserAuthenticated;
+- (bool)hydrateUserWithCachedToken;
 - (void)verifyUser:(void(^)(NSDictionary *))handler;
+- (void)verifyUser:(void(^)(NSDictionary *))handler tryToGetLatLong:(BOOL)tryToGetLatLong;
 - (void)getCachedUser:(void(^)(NSDictionary *))handler;
 
 - (void)getCachedUser:(void(^)(NSDictionary *))handler;
@@ -60,7 +66,7 @@ void ClientCallbackWalletUpdated();
 - (void)addWalletObserver:(id<ARBWalletObserver>)observer;
 - (void)showWalletPanel:(void(^)(void))handler;
 - (void)sendPromoCredits:(void(^)(NSDictionary *))handler amount:(NSString *)amount;
-- (void)getDevicePostalCode:(void(^)(NSDictionary *))handler;
+- (void)getDeviceLocation:(void(^)(NSDictionary *))handler requireLatLong:(BOOL)requireLatLong;
 
 - (void)requestTournament:(void(^)(NSDictionary *))handler buyIn:(NSString *)buyIn filters:(NSString *)filters;
 - (void)fetchTournaments:(void(^)(NSDictionary*))handler page:(NSString *)page isBlocking:(BOOL)isBlocking excludeViewed:(BOOL)excludeViewed;
@@ -80,12 +86,14 @@ void ClientCallbackWalletUpdated();
 - (void)showTournamentDetailsPanel:(void(^)(void))handler tournamentId:(NSString *)tournamentId;
 
 - (void)httpGet:(NSString*)url isBlocking:(BOOL)isBlocking handler:(void(^)(NSDictionary*))handler;
-- (void)httpGet:(NSString*)url params:(NSDictionary*)params isBlocking:(BOOL)isBlocking handler:(void(^)(NSDictionary*))handler;
+- (void)httpGet:(NSString*)url params:(NSDictionary*)params authTokenOverrde:(NSString*)authTokenOverrde isBlocking:(BOOL)isBlocking handler:(void(^)(NSDictionary*))handler;
 - (void)httpPost:(NSString*)url params:(NSDictionary*)params isBlocking:(BOOL)isBlocking handler:(void(^)(NSDictionary*))handler;
-- (void)httpPostAsDeveloper:(NSString*)url params:(NSDictionary*)params handler:(void(^)(NSDictionary*))handler;
+- (void)httpPost:(NSString*)url params:(NSDictionary*)params authTokenOverride:(NSString*)authTokenOverrde isBlocking:(BOOL)isBlocking handler:(void(^)(NSDictionary*))handler;
 
 - (void)addRequestToQueue:(NSString *)key;
 - (void)removeRequestFromQueue:(NSString *)key;
+
+- (NSString*)getExistingAuthToken;
 
 - (NSString*)getPlayerScoreFromTournament:(NSDictionary *)tournament;
 - (NSString*)getOpponentScoreFromTournament:(NSDictionary *)tournament;
