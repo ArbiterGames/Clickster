@@ -114,7 +114,7 @@ public class MainMenu : MonoBehaviour {
 				////////////////////////////////////////////////
 				if ( GUI.Button(new Rect(padding, Screen.height - padding - buttonHeight, buttonWidth, buttonHeight), "Login with Device", buttonStyle) ) {
 					uiEnabled = false;
-					Arbiter.LoginAsAnonymous( LoginSuccessHandler, DefaultErrorHandler );
+					Arbiter.LoginWithDeviceId( LoginSuccessHandler, DefaultErrorHandler );
 				}
 				
 				// Uses Unity's social plugin to authenticate with Apple Game Center
